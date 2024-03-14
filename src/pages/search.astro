@@ -2,8 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Footer from '../components/Footer.astro';
 import Card from "../components/Card.astro";
-//const res = await fetch('https://jsonplaceholder.typicode.com/posts');
-import { Image } from "astro:assets";
 
 const res = await fetch('https://images-api.nasa.gov/search?q=star');
 const data = await res.json();

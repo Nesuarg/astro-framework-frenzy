@@ -31,8 +31,7 @@ const { title, image, description } = Astro.props;
     <p>{description}</p>
   </div>
     <div>
-      <Image src={image} class="image" alt="image" inferSize={true} />
-
+      {image && <Image src={image} class="image" alt="image" inferSize={true} />}
     </div>
 </div>
 </Layout>
