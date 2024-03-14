@@ -1,17 +1,27 @@
 ---
-import { Image }  from 'astro:assets';
+import { Image } from "astro:assets";
 const { title, image, description, id } = Astro.props;
 ---
 
-<a class="card w-96 bg-base-100 shadow-xl" href={"/searches/" + id}>
+<a class="card bg-base-200 shadow-xl" href={"/searches/" + id}>
     <figure>
-        {image && <Image src={image} alt="img" inferSize={true} loading="lazy"/>}
+        {
+            image && (
+                <Image
+                    class="aspect-video"
+                    src={image}
+                    alt="img"
+                    inferSize={true}
+                    loading="lazy"
+                />
+            )
+        }
     </figure>
     <div class="card-body">
         <h2 class="card-title">{title}</h2>
         <p>{description}</p>
         <div class="card-actions justify-end">
-        <button class="btn btn-primary">Buy Now</button>
+            <button class="btn btn-primary">Buy Now</button>
         </div>
     </div>
 </a>
