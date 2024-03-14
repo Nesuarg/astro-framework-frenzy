@@ -3,7 +3,8 @@ import { Image } from "astro:assets";
 const { title, image, description, id } = Astro.props;
 ---
 
-<a class="card bg-base-200 shadow-xl" href={"/searches/" + id}>
+<div class="card bg-base-200 shadow-xl relative" >
+    <a href={"/searches/" + id} class="absolute inset-0 h-1/2"></a>
     <figure>
         {
             image && (
@@ -21,7 +22,30 @@ const { title, image, description, id } = Astro.props;
         <h2 class="card-title">{title}</h2>
         <p>{description}</p>
         <div class="card-actions justify-end">
-            <button class="btn btn-primary">Buy Now</button>
+            <button class="btn btn-primary" data-id={id}>
+                Buy Now
+            </button>
         </div>
     </div>
-</a>
+</div>
+
+<script>
+import { addCartItem } from "../cartStore.ts";
+
+function addToBasket(e) {
+    const item = {
+        id: e.target.attributes["data-id"].value,
+        name: e.target.closest(".card-body").querySelector("h2").textContent,
+        imageSrc: e.target.closest(".card").querySelector("img").src
+    };
+
+    addCartItem(item);
+}
+
+const buttons = document.querySelectorAll('.btn-primary');
+
+buttons.forEach(button => {
+    button.addEventListener('click', addToBasket);
+});
+
+</script>

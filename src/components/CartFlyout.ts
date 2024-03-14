@@ -12,7 +12,7 @@ export class CartFlyout extends LitElement {
   renderCartItem(cartItem) {
     return html`
       <li>
-        <img src="${cartItem.imageSrc}" alt="${cartItem.name}" />
+        <img width="100" src="${cartItem.imageSrc}" alt="${cartItem.name}" />
         <h3>${cartItem.name}</h3>
         <p>Quantity: ${cartItem.quantity}</p>
       </li>
