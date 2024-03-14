@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+//const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+
+const res = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1&api_key=ViznXxm3xeCbDoUUIsVbeSCOHdjATqUOog8dO7PQ');
+const data = await res.json();
+
+const data3 = async():Promise<[]> => {
+    return data;
+}
+
+---
+
+<Layout title="about here?">
+    <div class="list">
+    {
+        data.photos.map((item, index) => {
+            return <a href={"/rovers/" + item.id}>
+                <span>{item.rover.name}</span>
+                {item.camera.full_name}
+                {item.id}
+                <img src={item.img_src} alt="img" width="200" />
+                </a>;
+        })
+    }
+this is a page?
+</div>
+
+
+<Footer title="footer" />
+</Layout>
+
+<style>
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .list p {
+        margin: 10px;
+    }
+    .list img {
+        margin: 10px;
+    }
+</style>

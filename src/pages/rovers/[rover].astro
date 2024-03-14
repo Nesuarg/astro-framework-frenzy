@@ -1,0 +1,33 @@
+---
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+
+  const res = await fetch('https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1&api_key=ViznXxm3xeCbDoUUIsVbeSCOHdjATqUOog8dO7PQ');
+  const data = await res.json();
+
+  const items = data.photos.map((item) => {
+    return {
+      params: { rover: item.id },
+      props: {
+        rover: item.rover.name,
+        image: item.img_src,
+        camera: item.camera.full_name,
+      },
+    }
+  });
+
+  return [
+    ...items,
+  ];
+}
+
+const { rover, image, camera } = Astro.props;
+---
+<Layout title={rover}>
+<div>
+    <h1>{rover}</h1>
+    <p>{camera}</p>
+    <img src={image} width="100%" />
+</div>
+</Layout>
