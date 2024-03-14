@@ -7,43 +7,51 @@ import { CartFlyout } from "../components/CartFlyout";
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<div class="hero min-h-screen bg-base-200">
-			<div class="hero-content text-center">
-				<div class="flex items-center flex-col">
-					<h1 class="text-5xl font-bold mb-10">
-						“Prepare to Be Amazed!”
-					</h1><br />
-					<Image src={intro} width={400} alt="Intro" />
-					<p class="py-6">
-						📸 Dive into the cosmos with our mind-blowing collection
-						of jaw-dropping space and NASA photos! <br /><br />
+	<div class="flex">
+		<main>
+			<div class="hero min-h-screen bg-base-200">
+				<div class="hero-content text-center">
+					<div class="flex items-center flex-col">
+						<h1 class="text-5xl font-bold mb-10">
+							“Prepare to Be Amazed!”
+						</h1><br />
+						<Image src={intro} width={400} alt="Intro" />
+						<p class="py-6">
+							📸 Dive into the cosmos with our mind-blowing
+							collection of jaw-dropping space and NASA photos! <br
+							/><br />
 
-						🌠 From distant galaxies to our very own solar system,
-						these captivating images will leave you in awe. 🌟<br
-						/><br />
+							🌠 From distant galaxies to our very own solar
+							system, these captivating images will leave you in
+							awe. 🌟<br /><br />
 
-						🔭 Witness the Unseen: Behold stunning nebulae,
-						mysterious black holes, and otherworldly star clusters
-						captured by cutting-edge telescopes. 🌌<br /><br />
+							🔭 Witness the Unseen: Behold stunning nebulae,
+							mysterious black holes, and otherworldly star
+							clusters captured by cutting-edge telescopes. 🌌<br
+							/><br />
 
-						🌎 Earth from Above: Marvel at our beautiful blue planet
-						as seen from the International Space Station. 🌏<br
-						/><br />
+							🌎 Earth from Above: Marvel at our beautiful blue
+							planet as seen from the International Space Station.
+							🌏<br /><br />
 
-						📸 NASA’s Hidden Gems: Explore historic snapshots,
-						behind-the-scenes glimpses, and awe-inspiring moments
-						that define our cosmic journey. 📷<br /><br />
+							📸 NASA’s Hidden Gems: Explore historic snapshots,
+							behind-the-scenes glimpses, and awe-inspiring
+							moments that define our cosmic journey. 📷<br /><br
+							/>
 
-						Ready to embark on an interstellar adventure? Click here
-						to explore the universe through our lens! 🌠🔍<br />
-					</p>
-					<a class="btn btn-secondary" href="/search">Let's GO!!!</a>
+							Ready to embark on an interstellar adventure? Click
+							here to explore the universe through our lens! 🌠🔍<br
+							/>
+						</p>
+						<a class="btn btn-secondary" href="/search"
+							>Let's GO!!!</a
+						>
+					</div>
 				</div>
 			</div>
-		</div>
-	</main>
-	<CartFlyout client:load />
+		</main>
+		<CartFlyout client:load />
+	</div>
 </Layout>
 
 <style></style>
