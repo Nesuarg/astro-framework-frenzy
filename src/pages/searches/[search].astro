@@ -1,0 +1,53 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from "astro:assets";
+export async function getStaticPaths() {
+
+ const res = await fetch('https://images-api.nasa.gov/search?q=star');
+  const data = await res.json();
+
+  const items = data.collection.items.map((item) => {
+    return {
+      params: { search: item.data[0].nasa_id },
+      props: {
+        title: item.data[0].title,
+        image: item.links && item.links[0].href,
+        description: item.data[0] && item.data[0].description,
+      },
+    }
+  });
+
+  return [
+    ...items,
+  ];
+}
+
+const { title, image, description } = Astro.props;
+---
+<Layout title={title}>
+<div class="grid grid-cols-2 gap-10 p-20">
+  <div>
+    <h1 class="text-bold">{title}</h1><br/>
+    <p>{description}</p>
+  </div>
+    <div>
+      <Image src={image} class="image" alt="image" inferSize={true} />
+
+    </div>
+</div>
+</Layout>
+
+<style>
+  .image{
+    animation: fadeIn 1s;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+</style>
